@@ -1,18 +1,15 @@
-# 🚶🏻‍➡️🛍️ ProCart – Personalized Product Recommender System
+# 👟👠 Shoe Product Recommender System 👟👠
 
-Welcome to **SmartShop**, a product recommendation system that provides personalized shopping suggestions to users based on their interaction history, preferences, and product features.
+This project builds a **hybrid recommendation system** using a dataset of 1000+ shoe products. It combines content-based filtering (based on reviews and attributes), popularity trends, and collaborative filtering (simulated).
 
-## 🙌🏻 Project Overview
+## 🔧 Features Used
 
-This project aims to build a **hybrid recommender system** for products (using kaggle dataset), combining collaborative filtering and content-based methods.
+- Brand, Type, Gender, Size, Price
+- Customer Review Title & Text (NLP)
+- Number Sold & Ratings
 
-### Tasks
+## 🧠 Recommenders Included
 
-1. Project setup, dataset collection
-2. Data cleaning and EDA 
-3. Build content-based recommender 
-4. Build collaborative filtering model 
-5. Combine into hybrid model + evaluation 
-6. Build and test FastAPI backend 
-7. Streamlit/React frontend + deployment on aws
-
+- ✅ Content-Based Recommender (TF-IDF on reviews)
+- ✅ Popularity-Based Recommender (ratings & sold counts)
+- ✅ Hybrid Recommender (Simulated user preferences + text similarity)
