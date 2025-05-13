@@ -1,2 +1,7 @@
 pandas
 numpy
+scikit-learn
+scipy
+matplotlib
+seaborn
+langdetect
