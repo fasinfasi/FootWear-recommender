@@ -1,4 +1,4 @@
-# 👟👠 Shoe Product Recommender System 👟👠
+# 👟👠 *Shoozy* - Shoe Product Recommender System 👟👠
 
 This project builds a **hybrid recommendation system** using a dataset of 1000+ shoe products. It combines content-based filtering (based on reviews and attributes), popularity trends, and collaborative filtering (simulated).
 
