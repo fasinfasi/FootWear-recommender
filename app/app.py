@@ -4,6 +4,7 @@ from recommender import recommender_shoes
 import pickle
 import pandas as pd
 import os
+import random
 
 app = Flask(__name__)
 # Enable CORS for all routes and all origins for development
@@ -28,6 +29,69 @@ def get_products():
     try:
         return jsonify(product_ids)
     except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/random-shoes', methods=['GET'])
+def get_random_shoes():
+    try:
+        # Get 30 random shoes from the dataset
+        random_shoes = df.sample(n=min(90, len(df)))
+        
+        output = random_shoes[['Product_id', 'Brand', 'Type', 'Gender', 'Size', 'Number_Sold', 'Price(USD)', 'url','review_rating', 'review_text']].to_dict(orient='records')
+        
+        return jsonify(output)
+    except Exception as e:
+        import traceback
+        print(f"Error in /random-shoes: {str(e)}")
+        print(traceback.format_exc())
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/filter-shoes', methods=['POST'])
+def filter_shoes():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+            
+        selected_brand = data.get('brand', '')
+        selected_gender = data.get('gender', '')
+        price_range = data.get('price_range', '')
+        sort_by = data.get('sort_by', '')
+
+        print(f"Filter request data: {data}")  # Debug print
+        
+        # Start with all shoes
+        filtered_shoes = df.copy()
+
+        # Apply filters
+        if selected_brand:
+            filtered_shoes = filtered_shoes[filtered_shoes['Brand'] == selected_brand]
+        if selected_gender:
+            filtered_shoes = filtered_shoes[filtered_shoes['Gender'] == selected_gender]
+        if price_range:
+            if price_range == '0-50':
+                filtered_shoes = filtered_shoes[filtered_shoes['Price(USD)'] <= 50]
+            elif price_range == '50-100':
+                filtered_shoes = filtered_shoes[(filtered_shoes['Price(USD)'] > 50) & (filtered_shoes['Price(USD)'] <= 100)]
+            elif price_range == '100+':
+                filtered_shoes = filtered_shoes[filtered_shoes['Price(USD)'] > 100]
+
+        # Apply sorting
+        if sort_by == 'rating':
+            filtered_shoes = filtered_shoes.sort_values(by='review_rating', ascending=False, na_position='last')
+        elif sort_by == 'sold':
+            filtered_shoes = filtered_shoes.sort_values(by='Number_Sold', ascending=False, na_position='last')
+
+        # Limit to 50 results for better performance
+        filtered_shoes = filtered_shoes.head(50)
+
+        output = filtered_shoes[['Product_id', 'Brand', 'Type', 'Gender', 'Size', 'Number_Sold', 'Price(USD)', 'url','review_rating', 'review_text']].to_dict(orient='records')
+
+        return jsonify(output)
+    except Exception as e:
+        import traceback
+        print(f"Error in /filter-shoes: {str(e)}")
+        print(traceback.format_exc())
         return jsonify({"error": str(e)}), 500
 
 @app.route('/recommend', methods=['POST'])
@@ -73,9 +137,9 @@ def get_recommendations():
                 recommended = recommended[recommended['Price(USD)'] > 100]
 
         if sort_by == 'rating':
-            recommended = recommended.sort_values(by='review_rating', ascending=False)
+            recommended = recommended.sort_values(by='review_rating', ascending=False, na_position='last')
         elif sort_by == 'sold':
-            recommended = recommended.sort_values(by='Number_Sold', ascending=False)
+            recommended = recommended.sort_values(by='Number_Sold', ascending=False, na_position='last')
 
         output = recommended[['Product_id', 'Brand', 'Type', 'Gender', 'Size', 'Number_Sold', 'Price(USD)', 'url','review_rating', 'review_text']].head(10).to_dict(orient='records')
 

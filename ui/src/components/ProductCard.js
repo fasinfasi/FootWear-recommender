@@ -31,17 +31,23 @@ const ProductCard = ({ product }) => {
         />
       </div>
       <div className="product-info">
-        <h3 className="product-brand">{Brand || 'Unknown Brand'}</h3>
-        <p className="product-type">{Type || 'Unknown Type'}</p>
-        <p className="product-gender">{Gender || 'Unisex'}</p>
-        
-        <div className="product-rating">
-          <FaStar className="star-icon" />
-          <span>{formattedRating}</span>
-        </div>
-        
-        <div className="product-price">
-          {formattedPrice}
+        <div className="product-details-container">
+          <div className="product-left-details">
+            <h3 className="product-brand">{Brand || 'Unknown Brand'}</h3>
+            <p className="product-type">{Type || 'Unknown Type'}</p>
+            <p className="product-gender">{Gender || 'Unisex'}</p>
+          </div>
+          
+          <div className="product-right-details">
+            <div className="product-rating">
+              <FaStar className="star-icon" />
+              <span>{formattedRating}</span>
+            </div>
+            
+            <div className="product-price">
+              {formattedPrice}
+            </div>
+          </div>
         </div>
       </div>
     </div>
