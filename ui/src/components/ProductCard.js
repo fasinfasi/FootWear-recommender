@@ -1,9 +1,10 @@
 import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import { FaStar, FaHeart } from 'react-icons/fa';
 import './ProductCard.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onRecommend }) => {
   const {
+    Product_id,
     Brand,
     Type,
     Gender,
@@ -17,18 +18,33 @@ const ProductCard = ({ product }) => {
   
   // Format price to handle null/undefined values
   const formattedPrice = price ? `$${price}` : 'Price not available';
+  
+  const handleRecommendClick = () => {
+    if (onRecommend && Product_id) {
+      onRecommend(Product_id);
+    }
+  };
 
   return (
     <div className="product-card">
       <div className="product-image">
         <img 
-          src={image_url || 'https://placehold.co/200x200?text=No+Image'} 
+          src={image_url || 'https://via.placeholder.com/200x200?text=No+Image'} 
           alt={`${Brand || 'Unknown'} ${Type || 'Shoe'}`} 
           onError={(e) => {
             e.target.onerror = null;
-            e.target.src = 'https://placehold.co/200x200?text=No+Image';
+            e.target.src = 'https://via.placeholder.com/200x200?text=No+Image';
           }}
         />
+        {onRecommend && (
+          <button 
+            className="recommend-btn"
+            onClick={handleRecommendClick}
+            title="Find similar shoes"
+          >
+            <FaHeart />
+          </button>
+        )}
       </div>
       <div className="product-info">
         <div className="product-details-container">

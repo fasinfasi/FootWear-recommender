@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: shoosy-backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./model:/app/model  # Mount model directory to /app/model inside container
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    networks:
+      - shoosy-network
+
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+    container_name: shoosy-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    networks:
+      - shoosy-network
+    depends_on:
+      - backend
+
+networks:
+  shoosy-network:
+    driver: bridge
