@@ -3,6 +3,7 @@ numpy
 flask
 flask-cors
 scikit-learn
+pickle-mixin
 scipy
 matplotlib
 seaborn

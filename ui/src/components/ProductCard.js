@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar, FaHeart } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
 import './ProductCard.css';
 
 const ProductCard = ({ product, onRecommend }) => {
@@ -18,12 +18,6 @@ const ProductCard = ({ product, onRecommend }) => {
   
   // Format price to handle null/undefined values
   const formattedPrice = price ? `$${price}` : 'Price not available';
-  
-  const handleRecommendClick = () => {
-    if (onRecommend && Product_id) {
-      onRecommend(Product_id);
-    }
-  };
 
   return (
     <div className="product-card">
@@ -36,15 +30,6 @@ const ProductCard = ({ product, onRecommend }) => {
             e.target.src = 'https://via.placeholder.com/200x200?text=No+Image';
           }}
         />
-        {onRecommend && (
-          <button 
-            className="recommend-btn"
-            onClick={handleRecommendClick}
-            title="Find similar shoes"
-          >
-            <FaHeart />
-          </button>
-        )}
       </div>
       <div className="product-info">
         <div className="product-details-container">
