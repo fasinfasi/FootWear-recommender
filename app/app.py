@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 # Enable CORS for all routes and all origins for development
-CORS(app, resources={r"/*": {"origins": "https://shoozy.onrender.com/"}})
+CORS(app, resources={r"/*": {"origins": "https://shoozy.onrender.com"}}, supports_credentials=True)
  
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "similarity.pkl")
