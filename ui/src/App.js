@@ -4,7 +4,7 @@ import ProductCard from './components/ProductCard';
 import FilterPanel from './components/FilterPanel';
 
 // Use environment variable or default to localhost for development
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE || 'http://localhost:5000';
 
 function App() {
   const [shoes, setShoes] = useState([]);
