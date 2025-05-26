@@ -11,13 +11,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 # Enable CORS for all routes and all origins for development
-CORS(app, resources={
-    r"/*": {
-        "origins": ["http://localhost:3000", "http://127.0.0.1:3000"],
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Accept"]
-    }
-})
+CORS(app, resources={r"/*": {"origins": "https://shoozy.onrender.com/"}})
  
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "similarity.pkl")
@@ -281,4 +275,4 @@ def internal_error(error):
     return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(debug=True)
