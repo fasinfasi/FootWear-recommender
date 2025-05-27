@@ -46,7 +46,8 @@ Footwear/
 │ ├── Dockerfile         # Backend docker
 │ ├── render.yaml
 │ └── data
-│ │ └── cleaned_shoe_dataset.csv
+│ │ ├── shoe_dataset.csv          # original dataset
+│ │ └── cleaned_shoe_dataset.csv      # cleaned dataset
 ├── ui/
 │ ├── src/
 │ │ ├── App.js               # Main React component
