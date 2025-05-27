@@ -1,6 +1,6 @@
 # 👟 Shoozy – Shoe Recommender System 👟
 
-**Shoozy** is an web application that recommends shoes to users based on product similarity and customer preferences. It uses a content-based filtering approach and leverages machine learning and natural language processing to provide tailored recommendations.
+**Shoozy** uses a **content-based filtering** that recommends shoes to users based on product similarity and customer preferences. It uses a content-based filtering approach and leverages machine learning and natural language processing to provide tailored recommendations.
 
 Built with a **React frontend**, **Flask backend**, and deployed using **Docker** on **Render.com**, Shoozy delivers a clean, responsive, and smart user experience.
 
