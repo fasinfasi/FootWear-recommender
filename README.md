@@ -173,5 +173,9 @@ const API_BASE_URL = "https://shoozy-backend.onrender.com";
 - Columns: Product ID, Brand, Type, Gender, Size, Number Sold, Price, Review Title, Review Text, Review Rating
 - Used for training the recommender and powering the filtering system.
 
+## 📄License
+
+This project is licensed under the MIT License - see the [License](LICENSE) file for details.
+
 🥰😘 Thanks bro, spending your valuable time to read my ReadMe....😘
 Remember my name Fasin 🙋🏻‍♂️
