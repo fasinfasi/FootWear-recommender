@@ -1,4 +1,17 @@
 # 👟 Shoozy – Shoe Recommender System 👟
+<p>
+    <img src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white" />
+    <img src="https://img.shields.io/badge/Machine%20Learning-BA74CE?logo=robot&logoColor=white" />
+    <img src="https://img.shields.io/badge/NLP-549EA1?logo=chatbot&logoColor=white" />
+    <img src="https://img.shields.io/badge/TensorFlow-FF6F00?logo=tensorflow&logoColor=white" />
+    <img src="https://img.shields.io/badge/Pandas-150458?logo=pandas&logoColor=white" />
+    <img src="https://img.shields.io/badge/Matplotlib-11557C?logo=plotly&logoColor=white" />
+    <img src="https://img.shields.io/badge/Scikit--learn-F7931E?logo=scikit-learn&logoColor=white" />
+    <img src="https://img.shields.io/badge/Flask-000000?logo=flask&logoColor=white" />
+    <img src="https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white" />
+    <img src="https://img.shields.io/badge/Render-312B2B?logo=render&logoColor=white" />
+    <img src="https://img.shields.io/badge/Excel-0D6D16?logo=microsoft-excel&logoColor=white" />
+</p>
 
 **Shoozy** uses a **content-based filtering** that recommends shoes to users based on product similarity and customer preferences. It uses a content-based filtering approach and leverages machine learning and natural language processing to provide tailored recommendations.
 
